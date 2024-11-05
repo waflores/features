@@ -410,6 +410,8 @@ check_packages() {
             if ! dpkg -s "$@" > /dev/null 2>&1; then
                 pkg_mgr_update
                 ${INSTALL_CMD} "$@"
+                # XXX Update certs in the container
+                update-ca-certificates
             fi
             ;;
         rhel)
